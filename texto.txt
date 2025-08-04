@@ -1,0 +1,17 @@
+function criarSala() {
+    const salaId = Math.random().toString(36).substring(2, 8);
+    firebase.database().ref('salas/' + salaId).set({
+        cartas: [],
+        jogador1Pronto: false,
+        jogador2Pronto: false
+    }).then(() => {
+        window.location.href = 'jogo.html?sala=' + salaId;
+    });
+}
+
+function entrarSalaPrompt() {
+    const salaId = prompt("Digite o código da sala:");
+    if (salaId) {
+        window.location.href = 'jogo.html?sala=' + salaId;
+    }
+}
